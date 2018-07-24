@@ -1,0 +1,15 @@
+version: 2
+
+jobs:
+  run-parallel:
+    docker:
+      - image: centos:latest
+    parallelism: 4
+    steps:
+      - run: sleep 60 && env
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - run-parallel
